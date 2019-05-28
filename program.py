@@ -2,6 +2,7 @@ def sort (list):
     if len(list)==1:
         return list
 
+    list_t=list
     i=len(list)-1
 
     while i>0:
@@ -9,14 +10,16 @@ def sort (list):
             list.insert(i-1, list.pop(i))
         i-=1
 
-    li = sort (list[1:])
-    del list[-1:0:-1]
+    if list==list_t:
+        return list
+    else:
+        li = sort (list[1:])
+        del list[-1:0:-1]
 
+        for k in range (0, len(li)):
+            list.append(li[k])
 
-    for k in range (0, len(li)):
-        list.append(li[k])
-
-    return list
+        return list
 
 list=[]
 
